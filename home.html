@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b12">
+<meta name="description" content="SF Esports Arena — a multi-game esports organization built for competition, community and opportunity.">
+<title>SF Esports Arena — Play. Compete. Grow.</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#080b12;--panel:#101722;--panel2:#0c121c;--line:rgba(157,184,220,.14);--muted:#9ba9bc;--white:#f5f8ff;--blue:#4b8dff;--cyan:#53d7ff;--red:#ff536b;--max:1200px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+.topline{height:3px;background:linear-gradient(90deg,var(--red),#8c69ff,var(--cyan))}
+header{position:sticky;top:0;z-index:20;background:rgba(8,11,18,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.brand{display:flex;align-items:center;gap:12px;min-width:190px}.brand img{width:66px;height:66px;object-fit:contain}.brand strong{font-family:'Barlow Condensed',sans-serif;font-size:21px;letter-spacing:1.5px;line-height:1.0}.brand small{display:block;color:#9aaac0;font-size:9px;letter-spacing:3px;margin-top:5px}
+nav{display:flex;align-items:center;gap:23px}nav a{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#c5cede;transition:.2s}nav a:hover{color:var(--cyan)}
+.nav-cta,.btn{border:1px solid rgba(83,215,255,.55);background:linear-gradient(110deg,rgba(75,141,255,.2),rgba(83,215,255,.08));padding:13px 18px;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:white;cursor:pointer;clip-path:polygon(0 0,100% 0,100% 75%,91% 100%,0 100%);transition:.2s}.nav-cta:hover,.btn:hover{background:rgba(83,215,255,.2);transform:translateY(-2px)}
+.menu{display:none;background:none;border:1px solid var(--line);color:white;padding:10px 12px}
+.hero{position:relative;min-height:650px;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse at 78% 48%,rgba(46,111,190,.22),transparent 38%),radial-gradient(ellipse at 18% 80%,rgba(183,48,76,.13),transparent 35%),linear-gradient(120deg,#090d15,#0b1422 58%,#080b12)}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(125,164,210,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(125,164,210,.045) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(90deg,transparent,#000 50%,#000)}
+.hero:after{content:"";position:absolute;width:560px;height:560px;border:1px solid rgba(83,215,255,.14);border-radius:50%;right:-90px;top:35px;box-shadow:0 0 0 35px rgba(83,215,255,.025),0 0 0 85px rgba(83,215,255,.02)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px;padding:70px 0}
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--cyan);font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase}.eyebrow:before{content:"";width:34px;height:2px;background:var(--cyan)}
+h1,h2,h3,p{margin-top:0}.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(58px,8vw,104px);line-height:.87;letter-spacing:1px;text-transform:uppercase;margin:22px 0}.hero h1 span{display:block;color:transparent;-webkit-text-stroke:1.5px #78cfff}.hero-copy{max-width:540px;color:#aebbd0;font-size:15px;line-height:1.9}.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}.btn.secondary{border-color:var(--line);background:rgba(255,255,255,.035)}
+.hero-mark{display:flex;justify-content:center;align-items:center;position:relative}.hero-mark img{width:min(100%,430px);filter:drop-shadow(0 25px 55px rgba(36,134,255,.2));animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.hero-stamp{position:absolute;bottom:25px;right:4%;font-family:'Barlow Condensed';font-size:13px;letter-spacing:4px;color:#70849f;writing-mode:vertical-rl}
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0b111b;overflow:hidden}.ticker-inner{display:flex;justify-content:space-between;gap:30px;padding:17px 0;white-space:nowrap;color:#a9b8cd;font-family:'Barlow Condensed';font-size:16px;letter-spacing:2px;text-transform:uppercase}.ticker b{color:var(--cyan);font-weight:700}
+section{padding:95px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:36px}.kicker{font-size:10px;letter-spacing:3px;color:var(--cyan);font-weight:800;text-transform:uppercase;margin-bottom:12px}.section-head h2,.about h2{font-family:'Barlow Condensed';font-size:clamp(38px,5vw,58px);line-height:.95;text-transform:uppercase;margin:0}.section-head p{max-width:430px;color:var(--muted);font-size:13px;line-height:1.8;margin:0}
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;align-items:center}.about-visual{min-height:340px;border:1px solid var(--line);background:radial-gradient(circle at 50% 45%,rgba(62,145,255,.2),transparent 48%),linear-gradient(145deg,#111c2a,#0a0e16);display:grid;place-items:center;position:relative;overflow:hidden}.about-visual:before,.about-visual:after{content:"";position:absolute;border:1px solid rgba(83,215,255,.22);transform:rotate(45deg);width:210px;height:210px}.about-visual:after{width:270px;height:270px}.about-visual img{position:relative;z-index:1;width:190px;filter:drop-shadow(0 12px 35px #000)}
+.about h2{margin:0 0 20px}.about p{color:var(--muted);font-size:14px;line-height:1.95}.values{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:27px}.value{padding:17px 14px;border-left:2px solid var(--blue);background:rgba(255,255,255,.035)}.value b{display:block;font-family:'Barlow Condensed';font-size:20px;letter-spacing:1px;text-transform:uppercase}.value span{font-size:10px;color:var(--muted)}
+.dark-section{background:linear-gradient(180deg,#0a101a,#0c1420 50%,#0a1019);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.feature-card{min-height:220px;position:relative;padding:26px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(22,35,52,.9),rgba(12,18,28,.95));overflow:hidden;transition:.25s}.feature-card:hover{transform:translateY(-5px);border-color:rgba(83,215,255,.5)}.feature-card:after{content:attr(data-num);position:absolute;right:12px;bottom:-25px;font-family:'Barlow Condensed';font-size:130px;font-weight:900;color:rgba(120,170,220,.055);line-height:1}.card-icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(83,215,255,.3);color:var(--cyan);font-size:19px;margin-bottom:23px}.feature-card h3{font-family:'Barlow Condensed';font-size:27px;text-transform:uppercase;margin-bottom:9px}.feature-card p{color:var(--muted);font-size:12px;line-height:1.7;max-width:310px;margin:0}
+.games-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.game{height:150px;border:1px solid var(--line);background:linear-gradient(145deg,#141e2d,#0b111a);display:flex;flex-direction:column;justify-content:end;padding:18px;position:relative;overflow:hidden}.game:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 45%,rgba(83,215,255,.08));}.game strong{position:relative;font-family:'Barlow Condensed';font-size:24px;text-transform:uppercase}.game small{position:relative;color:var(--cyan);font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:30px;border:1px solid var(--line);background:linear-gradient(145deg,#121d2b,#0c121c);min-height:250px;position:relative;overflow:hidden}.panel .number{font-family:'Barlow Condensed';font-size:56px;color:rgba(83,215,255,.22);font-weight:900;position:absolute;right:20px;top:4px}.panel h3{font-family:'Barlow Condensed';font-size:32px;text-transform:uppercase;margin:12px 0}.panel p{max-width:440px;color:var(--muted);font-size:13px;line-height:1.8}
+.cta{padding:65px 0;background:radial-gradient(ellipse at 50% 0,rgba(59,137,255,.2),transparent 65%),#0b111a;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}.cta h2{font-family:'Barlow Condensed';font-size:clamp(42px,6vw,68px);text-transform:uppercase;margin:0 0 12px}.cta p{color:var(--muted);font-size:13px;margin-bottom:25px}
+footer{padding:55px 0 25px;background:#070a10}.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:35px;padding-bottom:40px;border-bottom:1px solid var(--line)}.footer-brand img{width:95px}.footer-brand p{color:var(--muted);font-size:12px;line-height:1.8;max-width:280px;margin-top:12px}.footer-col h4{font-size:10px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;margin:8px 0 18px}.footer-col a{display:block;color:#aab6c8;font-size:12px;margin:12px 0}.footer-col a:hover{color:white}.copyright{display:flex;justify-content:space-between;gap:20px;padding-top:20px;color:#748198;font-size:10px;letter-spacing:.5px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:50;background:#121e2d;border:1px solid rgba(83,215,255,.45);padding:14px 20px;box-shadow:0 12px 40px #0009;color:white;font-size:11px;letter-spacing:1.5px;font-weight:800;text-transform:uppercase;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:950px){nav{gap:13px}nav a{font-size:9px}.nav-cta{display:none}.hero{min-height:570px}.hero-grid{grid-template-columns:1fr  .8fr}.games-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.wrap{width:min(var(--max),calc(100% - 32px))}.nav{height:70px}.brand img{width:52px;height:52px}.brand strong{font-size:18px}.menu{display:block}nav{display:none;position:absolute;top:70px;left:0;right:0;padding:20px 25px 25px;background:#0b111b;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}nav.open{display:flex}nav a{font-size:11px}.hero-grid{grid-template-columns:1fr;text-align:center;padding:60px 0 50px}.hero .eyebrow{justify-content:center}.hero-copy{margin:auto}.hero-actions{justify-content:center}.hero-mark{grid-row:1}.hero-mark img{width:230px}.hero h1{font-size:65px}.hero-stamp{display:none}.ticker-inner{justify-content:flex-start}.section-head{display:block}.section-head p{margin-top:15px}.about-grid{grid-template-columns:1fr;gap:30px}.about-visual{min-height:260px}.cards{grid-template-columns:1fr}.games-grid{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.copyright{flex-direction:column}.values{gap:7px}.value{padding:13px 9px}.value b{font-size:17px}}
+@media(max-width:380px){.games-grid{grid-template-columns:1fr}.hero h1{font-size:56px}.footer-top{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+ <div class="wrap nav">
+  <a class="brand" href="#home"><img src="logo.png" alt="SF Esports Arena logo"><span><strong>SF ESPORTS ARENA</strong><small>PLAY • COMPETE • GROW</small></span></a>
+  <button class="menu" id="menuBtn" aria-label="Toggle navigation">☰</button>
+  <nav id="navLinks">
+   <a href="#home">Home</a><a href="#about">About</a><a href="#games">Games</a><a href="#teams">Teams</a><a href="#tournaments">Tournaments</a><a href="#news">News</a><a href="#community">Community</a>
+  </nav>
+  <button class="nav-cta coming">Join the Arena ↗</button>
+ </div>
+</header>
+<main>
+<section class="hero" id="home">
+ <div class="wrap hero-grid">
+  <div>
+   <div class="eyebrow">A multi-game esports organization</div>
+   <h1>Where legends <span>compete.</span></h1>
+   <p class="hero-copy">We bring players, teams and gaming communities together through competition, opportunity and a shared passion for esports. One arena. Every game. Endless possibilities.</p>
+   <div class="hero-actions"><button class="btn coming">Explore the Arena ↗</button><button class="btn secondary coming">Join our community</button></div>
+  </div>
+  <div class="hero-mark"><img src="logo.png" alt="SF Esports Arena emblem"></div>
+ </div>
+ <div class="hero-stamp">EST. • BUILT FOR COMPETITION</div>
+</section>
+<div class="ticker"><div class="wrap ticker-inner"><span><b>01 /</b> COMPETE</span><span>BUILT FOR EVERY GAME</span><span><b>02 /</b> CONNECT</span><span>GROW THE COMMUNITY</span><span><b>03 /</b> ACHIEVE</span></div></div>
+<section id="about">
+ <div class="wrap about-grid">
+  <div class="about-visual"><img src="logo.png" alt="SF Esports Arena logo"></div>
+  <div class="about">
+   <div class="kicker">Who we are</div><h2>More than a team.<br>A whole arena.</h2>
+   <p>SF Esports Arena is a multi-game esports organization focused on building a connected competitive ecosystem. From tournaments and team development to community initiatives and esports content, our goal is to create meaningful opportunities for gamers at every level.</p>
+   <p>Born from a passion for gaming, we're building a platform where people can play, compete, grow and take their next step in esports.</p>
+   <div class="values"><div class="value"><b>Play</b><span>Discover your potential</span></div><div class="value"><b>Compete</b><span>Challenge your limits</span></div><div class="value"><b>Grow</b><span>Build your future</span></div></div>
+  </div>
+ </div>
+</section>
+<section class="dark-section" id="divisions">
+ <div class="wrap">
+  <div class="section-head">
+   <div>
+    <div class="kicker">What we do</div>
+    <h2>Built for the<br>whole ecosystem</h2>
+   </div>
+   <p>Explore the different sides of our organization. Each division has a role in building a stronger esports community.</p>
+  </div>
+  <div class="cards">
+   <article class="feature-card" data-num="01"><div class="card-icon">⌁</div><h3>Competitive Teams</h3><p>Team divisions, player rosters, competitive journeys and official representation across game titles.</p></article>
+   <article class="feature-card" data-num="02"><div class="card-icon">✦</div><h3>Tournaments & Events</h3><p>Organized competitions, match coverage, results and opportunities for emerging teams.</p></article>
+   <article class="feature-card" data-num="03"><div class="card-icon">◎</div><h3>Community</h3><p>A place for players, fans and esports enthusiasts to connect, collaborate and grow together.</p></article>
+   <article class="feature-card" data-num="04"><div class="card-icon">◈</div><h3>Content & Media</h3><p>Highlights, broadcasts, stories and coverage celebrating the people behind the competition.</p></article>
+   <article class="feature-card" data-num="05"><div class="card-icon">⌖</div><h3>Talent Development</h3><p>Opportunities for players, creators and future esports professionals to get involved.</p></article>
+   <article class="feature-card" data-num="06"><div class="card-icon">✧</div><h3>Partnerships</h3><p>Collaborations with brands, organizations and creators who share our vision for esports.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="games">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">Our divisions</div><h2>Every game.<br>One arena.</h2></div>
+   <p>SF Esports Arena is designed to support multiple esports titles. More game divisions and roster details will be announced here.</p>
+  </div>
+  <div class="games-grid">
+   <div class="game"><strong>Free Fire</strong><small>Game division · Coming soon</small></div>
+   <div class="game"><strong>PUBG Mobile</strong><small>Game division · Coming soon</small></div>
+   <div class="game"><strong>Mobile Legends</strong><small>Game division · Coming soon</small></div>
+   <div class="game"><strong>Valorant</strong><small>Game division · Coming soon</small></div>
+   <div class="game"><strong>EA Sports FC</strong><small>Game division · Coming soon</small></div>
+   <div class="game"><strong>Other Titles</strong><small>More games · Coming soon</small></div>
+   <div class="game"><strong>New Divisions</strong><small>Expanding · Coming soon</small></div>
+   <div class="game"><strong>Your Game</strong><small>Stay connected</small></div>
+  </div>
+ </div>
+</section>
+
+<section class="dark-section" id="teams">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">The people behind the badge</div><h2>Teams & talent</h2></div>
+   <p>Discover our official teams, player profiles, staff and opportunities to represent the Arena.</p>
+  </div>
+  <div class="split">
+   <div class="panel">
+    <span class="number">01</span>
+    <div class="kicker">Official divisions</div>
+    <h3>Meet our teams</h3>
+    <p>Team profiles, rosters, player roles, achievements and competitive records will be available in the teams section.</p>
+    <button class="btn coming">View teams ↗</button>
+   </div>
+   <div class="panel">
+    <span class="number">02</span>
+    <div class="kicker">Be part of the roster</div>
+    <h3>Join the Arena</h3>
+    <p>Player recruitment, staff applications and creator opportunities will be announced through our official channels.</p>
+    <button class="btn coming">Explore opportunities ↗</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="tournaments">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">The road to victory</div><h2>Tournaments & results</h2></div>
+   <p>Follow competitions from registration to the final standings, with match schedules, results and highlights in one place.</p>
+  </div>
+  <div class="cards">
+   <article class="feature-card" data-num="01"><div class="card-icon">◷</div><h3>Upcoming Events</h3><p>Find upcoming tournaments, registration windows, schedules and event information.</p></article>
+   <article class="feature-card" data-num="02"><div class="card-icon">⚔</div><h3>Live Competitions</h3><p>Follow ongoing matches, standings, match updates and tournament progress.</p></article>
+   <article class="feature-card" data-num="03"><div class="card-icon">♛</div><h3>Past Results</h3><p>Explore champions, final rankings, tournament archives and memorable moments.</p></article>
+  </div>
+  <div style="text-align:center;margin-top:28px">
+   <button class="btn coming">Open tournament hub ↗</button>
+  </div>
+ </div>
+</section>
+
+<section class="dark-section" id="news">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">From the Arena</div><h2>Latest news & stories</h2></div>
+   <p>Official announcements, team signings, tournament updates, achievements and esports coverage.</p>
+  </div>
+  <div class="split">
+   <div class="panel">
+    <span class="number">NEWS</span>
+    <div class="kicker">Announcements</div>
+    <h3>What's happening</h3>
+    <p>Stay informed about organization updates, new divisions, events and important announcements.</p>
+    <button class="btn coming">Read updates ↗</button>
+   </div>
+   <div class="panel">
+    <span class="number">MEDIA</span>
+    <div class="kicker">Watch & discover</div>
+    <h3>Highlights & broadcasts</h3>
+    <p>Match highlights, livestreams, player features and stories from across our esports community.</p>
+    <button class="btn coming">Explore media ↗</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="community">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">Together we grow</div><h2>Join the community</h2></div>
+   <p>Connect with gamers, meet competitive teams, follow our latest updates and be part of the next chapter.</p>
+  </div>
+  <div class="cards">
+   <article class="feature-card" data-num="01">
+    <div class="card-icon">◉</div>
+    <h3>Discord</h3>
+    <p>Community conversations, announcements and opportunities.</p>
+    <button class="btn coming">Join Discord ↗</button>
+   </article>
+   <article class="feature-card" data-num="02">
+    <div class="card-icon">f</div>
+    <h3>Facebook</h3>
+    <p>News, community posts, events and organization updates.</p>
+    <button class="btn coming">Follow Facebook ↗</button>
+   </article>
+   <article class="feature-card" data-num="03">
+    <div class="card-icon">▶</div>
+    <h3>YouTube</h3>
+    <p>Live broadcasts, tournament coverage and video highlights.</p>
+    <button class="btn coming">Watch on YouTube ↗</button>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="cta">
+ <div class="wrap">
+  <div class="kicker">Your next chapter starts here</div>
+  <h2>Ready to enter the Arena?</h2>
+  <p>Players. Teams. Creators. Fans. There's a place for you here.</p>
+  <button class="btn coming">Become part of SF ↗</button>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="footer-top">
+   <div class="footer-brand">
+    <img src="logo.png" alt="SF Esports Arena">
+    <p>A multi-game esports organization bringing people together through competition, community and opportunity.</p>
+   </div>
+   <div class="footer-col">
+    <h4>Explore</h4>
+    <a href="#about">About us</a>
+    <a href="#games">Game divisions</a>
+    <a href="#teams">Teams & rosters</a>
+    <a href="#tournaments">Tournaments</a>
+   </div>
+   <div class="footer-col">
+    <h4>Discover</h4>
+    <a href="#news">News & media</a>
+    <a href="#community">Community</a>
+    <a class="coming-link" href="#">Careers</a>
+    <a class="coming-link" href="#">Partnerships</a>
+   </div>
+   <div class="footer-col">
+    <h4>Information</h4>
+    <a class="coming-link" href="#">Contact</a>
+    <a class="coming-link" href="#">Privacy policy</a>
+    <a class="coming-link" href="#">Terms of use</a>
+   </div>
+  </div>
+  <div class="copyright">
+   <span>© 2026 SF ESPORTS ARENA. ALL RIGHTS RESERVED.</span>
+   <span>PLAY • COMPETE • GROW</span>
+  </div>
+ </div>
+</footer>
+
+<div class="toast" id="toast">Coming Soon — This section is under development.</div>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const nav = document.getElementById('navLinks');
+const toast = document.getElementById('toast');
+
+menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('open');
+});
+
+nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => nav.classList.remove('open'));
+});
+
+let toastTimer;
+
+document.querySelectorAll('.coming, .coming-link').forEach(el => {
+    el.addEventListener('click', e => {
+        e.preventDefault();
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2300);
+    });
+});
+</script>
+</body>
+</html>
